@@ -33,7 +33,6 @@ radio.on_received_number(on_received_number)
 
 def on_button_pressed_a():
     global speed, light_change
-    debug = 0
     bitbot.stop(BBStopMode.BRAKE)
     if debug == 1:
         speed += 10
@@ -44,11 +43,30 @@ def on_button_pressed_a():
             speed = 100
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
+def on_button_pressed_b():
+    global speed, light_change
+    bitbot.go(BBDirection.FORWARD, 50)
+    if debug == 1:
+        speed += -10
+        light_change = 1
+        if speed > 100:
+            speed = 0
+        if speed < 0:
+            speed = 100
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+debug = 0
 light_change = 0
 speed = 0
 radio.set_group(140)
 speed = 50
 light_change = 1
+debug = 0
+bitbot.set_pixel_color(5, 0xFF0000)
+bitbot.set_pixel_color(11, 0xFF0000)
+bitbot.set_pixel_color(6, 0xFF0000)
+bitbot.set_pixel_color(0, 0xFF0000)
+bitbot.led_brightness(1)
 
 def on_forever():
     global light_change

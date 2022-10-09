@@ -75,6 +75,11 @@ radio.setGroup(140)
 speed = 50
 light_change = 1
 debug = 0
+bitbot.setPixelColor(5, 0xFF0000)
+bitbot.setPixelColor(11, 0xFF0000)
+bitbot.setPixelColor(6, 0xFF0000)
+bitbot.setPixelColor(0, 0xFF0000)
+bitbot.ledBrightness(1)
 basic.forever(function () {
     if (light_change == 1) {
         light_change = 0
